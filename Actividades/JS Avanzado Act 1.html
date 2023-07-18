@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cambio de color al hacer clic</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease;
+            background-color: #F2F2F2;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            height: 200px;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+        }
+
+        #square1 {
+            background-color: #FFD3C8;
+        }
+
+        #square2 {
+            background-color: #D0E7FF;
+        }
+
+        #square3 {
+            background-color: #D9FFE4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="square1" class="square" onclick="changeColor('square1')"></div>
+        <div id="square2" class="square" onclick="changeColor('square2')"></div>
+        <div id="square3" class="square" onclick="changeColor('square3')"></div>
+    </div>
+
+    <script>
+        function changeColor(id) {
+            var square = document.getElementById(id);
+            var randomColor = getRandomColor();
+            square.style.boxShadow = "0 0 0 2px " + randomColor;
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        function getRandomColor() {
+            var hue = Math.floor(Math.random() * 360);
+            var pastelColor = 'hsl(' + hue + ', 70%, 80%)';
+            return pastelColor;
+        }
+    </script>
+</body>
+</html>
